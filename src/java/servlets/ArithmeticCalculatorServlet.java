@@ -23,16 +23,33 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String age = request.getParameter("age");
+        String first = request.getParameter("first");
+        String second = request.getParameter("second");
+        String operation = request.getParameter("operation");
         
         
-        
-        request.setAttribute("age", age);
+        request.setAttribute("first", first);
+        request.setAttribute("second", second);
         try {
-            int int_age = Integer.parseInt(age);
-            request.setAttribute("msg", "Your age next birthday will be " + (int_age +1) + "<br>");
+            int int_first = Integer.parseInt(first);
+            int int_second = Integer.parseInt(second);
+            if (operation == "+") {
+                request.setAttribute("msg", int_first + int_second);
+            }
+            else if (operation == "-") {
+                request.setAttribute("msg", int_first - int_second);
+            }
+            else if (operation == "*") {
+                request.setAttribute("msg", int_first * int_second);
+            }
+            else if (operation == "%") {
+                request.setAttribute("msg", int_first / int_second);
+            }
+            else {
+                request.setAttribute("msg", "Nice try bucko");
+            }
         } catch (Exception e) {
-            request.setAttribute("msg", "Please input a valid age.<br>");
+            request.setAttribute("msg", "Invalid");
         }
         getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp")
                 .forward(request, response);

@@ -16,7 +16,7 @@
         <form action="arithmetic" method="post">
             First: <input type="text" name="first" value="${first}"><br>
             Second: <input type="text" name="second" value="${second}"><br>
-            <input type="submit" value="+"><input type="submit" value="-"><input type="submit" value="*"><input type="submit" value="%">
+            <input type="submit" name="operation" value="+"><input type="submit" name="operation" value="-"><input type="submit" name="operation" value="*"><input type="submit" name="operation" value="%">
         </form>
         <p>
             Result: ${msg} <br>
