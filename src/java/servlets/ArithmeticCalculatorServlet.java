@@ -43,7 +43,11 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
                     request.setAttribute("msg", int_first * int_second);
                     break;
                 case "%":
+                    if (int_second == 0) {
+                        request.setAttribute("msg", "Don't divide by zero thanks");
+                    } else {
                     request.setAttribute("msg", int_first / int_second);
+                    }
                     break;
                 default:
                     request.setAttribute("msg", "Nice try bucko");
