@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,7 +49,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
                     request.setAttribute("msg", "Nice try bucko");
                     break;
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             request.setAttribute("msg", "Invalid");
         }
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticCalculator.jsp")
