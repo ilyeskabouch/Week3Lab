@@ -33,20 +33,22 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         try {
             int int_first = Integer.parseInt(first);
             int int_second = Integer.parseInt(second);
-            if (operation.equals("+")) {
-                request.setAttribute("msg", int_first + int_second);
-            }
-            else if (operation.equals("-")) {
-                request.setAttribute("msg", int_first - int_second);
-            }
-            else if (operation.equals("*")) {
-                request.setAttribute("msg", int_first * int_second);
-            }
-            else if (operation.equals("%")) {
-                request.setAttribute("msg", int_first / int_second);
-            }
-            else {
-                request.setAttribute("msg", "Nice try bucko");
+            switch (operation) {
+                case "+":
+                    request.setAttribute("msg", int_first + int_second);
+                    break;
+                case "-":
+                    request.setAttribute("msg", int_first - int_second);
+                    break;
+                case "*":
+                    request.setAttribute("msg", int_first * int_second);
+                    break;
+                case "%":
+                    request.setAttribute("msg", int_first / int_second);
+                    break;
+                default:
+                    request.setAttribute("msg", "Nice try bucko");
+                    break;
             }
         } catch (Exception e) {
             request.setAttribute("msg", "Invalid");
